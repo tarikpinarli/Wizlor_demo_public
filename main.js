@@ -9,8 +9,13 @@ function startListening() {
     };
   
     recognition.onerror = (event) => {
-      document.getElementById("response").textContent = "❌ Error: " + event.error;
+      console.warn("Speech recognition error:", event.error);
+      // Do not display error unless it's actually a failure
+      if (event.error !== "no-speech") {
+        document.getElementById("response").textContent = "❌ Error: " + event.error;
+      }
     };
+        
   
     recognition.onresult = (event) => {
       const userInput = event.results[0][0].transcript;
@@ -49,6 +54,8 @@ function startListening() {
       });
   
       const data = await response.json();
+      console.log("🧠 Server response:", data);
+
   
       if (data.reply) {
         document.getElementById("response").textContent = data.reply;
