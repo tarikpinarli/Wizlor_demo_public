@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wizlor Guide</title>
+  <title>🧙‍♂️ Wizlor the Battle Advisor</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="overlay">
-    <h1>Welcome, Chief!</h1>
-    <button onclick="startListening()">🎤 Ask the Wizlor Guide</button>
-    <div id="response" class="response-box"></div>
+  <div id="wizlor-box">
+    <p id="questionDisplay"><strong>You:</strong></p>
+    <p id="response"><strong>Wizlor:</strong></p>
+    <button id="mic-btn" onclick="startListening()">🎙️ Ask Wizlor</button>
   </div>
 
   <script src="main.js"></script>

@@ -1,40 +1,49 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: url('public/coc_background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-  }
-  
-  .overlay {
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 40px;
-    margin: 100px auto;
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
-    border-radius: 12px;
-  }
-  
-  button {
-    padding: 12px 20px;
-    font-size: 18px;
-    background: #f39c12;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background: #e67e22;
-  }
-  
-  .response-box {
-    margin-top: 20px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    min-height: 60px;
-  }
-  
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: url('public/coc_background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+#wizlor-box {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  width: 300px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+#wizlor-box p {
+  margin: 6px 0;
+  font-size: 14px;
+  line-height: 1.3em;
+}
+
+#wizlor-box strong {
+  color: #3b4cca;
+}
+
+#mic-btn {
+  margin-top: 8px;
+  padding: 8px;
+  font-size: 14px;
+  background-color: #3b4cca;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#mic-btn:hover {
+  background-color: #2a3691;
+}
