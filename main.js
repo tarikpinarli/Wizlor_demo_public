@@ -60,7 +60,6 @@ Defenses: 2 Cannons, 1 Archer Tower
 Clan Castle: Not rebuilt
 Builders: 2 active
 Shield: 10h 14m
-Quest: Rebuild the Clan Castle
 `;
 
 async function askGuide(userQuestion) {
@@ -71,15 +70,14 @@ async function askGuide(userQuestion) {
 Base Info:
 Town Hall: 2
 Level: 4
-Gold: 9,971
-Elixir: 5,744
-Gems: 267
+Gold: 7,493
+Elixir: 3,673
+Gems: 262
 Army: 35 Barbarians
 Defenses: 2 Cannons, 1 Archer Tower
 Clan Castle: Not rebuilt
 Builders: 2 active
-Shield: 10h 14m
-Quest: Rebuild the Clan Castle
+Shield: 4h 32m
 
 Question: ${userQuestion}
 `;
