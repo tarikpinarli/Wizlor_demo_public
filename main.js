@@ -41,7 +41,11 @@ function startListening() {
   }
 }
 async function askGuide(userQuestion) {
-  document.getElementById("response").textContent = "🤔 Thinking...";
+  // Show the user's question
+  document.getElementById("response").innerHTML = `
+    🗣️ <strong>You:</strong> "${userQuestion}"<br><br>
+    🤔 <em>Wizlor is thinking...</em>
+  `;
 
   try {
     const response = await fetch("/api/ask", {
@@ -54,7 +58,10 @@ async function askGuide(userQuestion) {
     console.log("🧠 Server response:", data);
 
     if (data.reply) {
-      document.getElementById("response").textContent = data.reply;
+      document.getElementById("response").innerHTML = `
+        🗣️ <strong>You:</strong> "${userQuestion}"<br><br>
+        🧙‍♂️ <strong>Wizlor:</strong> ${data.reply}
+      `;
       speak(data.reply);
     } else {
       document.getElementById("response").textContent = "⚠️ Failed to get a valid reply.";
@@ -65,6 +72,7 @@ async function askGuide(userQuestion) {
     console.error("Fetch error:", err);
   }
 }
+
 function speak(text) {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'en-US';
