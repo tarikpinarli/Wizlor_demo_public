@@ -39,33 +39,23 @@ function startListening() {
   `;
   
   async function askGuide(userQuestion) {
-    const prompt = `
-  You are a friendly Clash of Clans guide named Wizlor. Help the player by giving advice and game tips based on their current status.
+    document.getElementById("response").textContent = "🤔 Thinking...";
   
-  Player's stats:
-  ${PLAYER_DATA}
-  
-  They asked: "${userQuestion}"
-  
-  Give a strategic answer in 2-3 sentences. Be helpful and fun.
-  `;
-  
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch("/api/ask", {
       method: "POST",
-      headers: {
-        "Authorization": "Bearer YOUR_OPENAI_API_KEY",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: prompt }]
-      })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: userQuestion })
     });
   
     const data = await response.json();
-    const reply = data.choices[0].message.content.trim();
-    document.getElementById("response").textContent = reply;
-    speak(reply);
+  
+    if (data.reply) {
+      document.getElementById("response").textContent = data.reply;
+      speak(data.reply);
+    } else {
+      document.getElementById("response").textContent = "⚠️ Failed to get response.";
+    }
   }
+  
   
       
