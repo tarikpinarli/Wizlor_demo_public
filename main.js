@@ -93,8 +93,9 @@ ${playerContext}
 
 The player asks: "${userQuestion}"
 
-Respond in 1–2 sentences. Be casual, fun, and strategic — like you're helping a friend in battle.
-Don't mention the user's name directly. Focus on what they should do next.
+Respond in 1–2 sentences. Be engaging, fun, and strategic — like you're helping a friend in battle.
+Talk in a way that it has the clash of clans soul.
+Don't mention the user's name directly, instead use fancy words. Focus on what they should do next.
 `;
 
   try {
