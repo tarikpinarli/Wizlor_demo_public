@@ -41,21 +41,26 @@ function startListening() {
   async function askGuide(userQuestion) {
     document.getElementById("response").textContent = "🤔 Thinking...";
   
-    const response = await fetch("/api/ask", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: userQuestion })
-    });
+    try {
+      const response = await fetch("/api/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question: userQuestion })
+      });
   
-    const data = await response.json();
+      const data = await response.json();
   
-    if (data.reply) {
-      document.getElementById("response").textContent = data.reply;
-      speak(data.reply);
-    } else {
-      document.getElementById("response").textContent = "⚠️ Failed to get response.";
+      if (data.reply) {
+        document.getElementById("response").textContent = data.reply;
+        speak(data.reply);
+      } else {
+        document.getElementById("response").textContent = "⚠️ Failed to get a valid reply.";
+        console.error("API Response:", data);
+      }
+    } catch (err) {
+      document.getElementById("response").textContent = "❌ Error calling API.";
+      console.error("Fetch error:", err);
     }
   }
-  
   
       
