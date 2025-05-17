@@ -3,7 +3,6 @@ function startListening() {
   recognition.lang = 'en-US';
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
-
   recognition.continuous = false;
 
   recognition.onstart = () => {
@@ -52,57 +51,40 @@ function speak(text) {
 }
 
 // 🧠 Real game data from your screenshot
-const PLAYER_DATA = {
-  name: "clab2l",
-  level: 4,
-  townHall: 2,
-  trophies: 21,
-  gold: 9971,
-  elixir: 5744,
-  gems: 267,
-  builderStatus: "2/2 active",
-  shieldTime: "10h 14m",
-  army: "35 Barbarians",
-  defenses: ["2 Cannons", "1 Archer Tower"],
-  clanCastle: "Not rebuilt",
-  storage: {
-    gold: "full",
-    elixir: "half"
-  },
-  currentQuest: "Rebuild the Clan Castle"
-};
+const playerContext = `
+Town Hall: 2
+Level: 4
+Gold: 9,971 | Elixir: 5,744 | Gems: 267
+Army: 35 Barbarians
+Defenses: 2 Cannons, 1 Archer Tower
+Clan Castle: Not rebuilt
+Builders: 2 active
+Shield: 10h 14m
+Quest: Rebuild the Clan Castle
+`;
 
 async function askGuide(userQuestion) {
   const responseDiv = document.getElementById("response");
   responseDiv.innerHTML = `<strong>Wizlor:</strong> Thinking...`;
 
-  const playerContext = `
-Town Hall: ${PLAYER_DATA.townHall}, Level: ${PLAYER_DATA.level}
-Builders: ${PLAYER_DATA.builderStatus}, Shield: ${PLAYER_DATA.shieldTime}
-Gold: ${PLAYER_DATA.gold}, Elixir: ${PLAYER_DATA.elixir}, Army: ${PLAYER_DATA.army}
-Defenses: ${PLAYER_DATA.defenses.join(", ")}, Clan Castle: ${PLAYER_DATA.clanCastle}
-Current Quest: ${PLAYER_DATA.currentQuest}
-`;
-
   const prompt = `
-You're Wizlor — a battle-worn Clash of Clans wizard who talks like a trusted buddy.
-You're helpful, brave, and speak in short, confident sentences with aggressive tone.
+You're Wizlor — a wise and bold Clash of Clans battle advisor.
 
-Use this base info:
+Here’s the player’s base:
 ${playerContext}
 
 The player asks: "${userQuestion}"
 
-Respond in 1–2 sentences. Be engaging, fun, and strategic — like you're helping a friend in battle.
-Talk in a way that it has the clash of clans soul.
-Don't mention the user's name directly, instead use fancy words. Focus on what they should do next.
+Respond in 1–2 sentences. Be a brave and loyal friend.
+⚠️ ONLY use the above info — do NOT make up anything else.
+If unsure, respond with a general friendly strategy like "Upgrade defenses" or "Keep your builders busy."
 `;
 
   try {
     const response = await fetch("/api/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt }) // ✅ this is correct
+      body: JSON.stringify({ prompt })
     });
 
     const data = await response.json();
