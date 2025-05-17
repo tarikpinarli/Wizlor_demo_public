@@ -32,7 +32,19 @@ export default async function handler(req, res) {
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: prompt }]
+          messages: [
+            {
+              role: "system",
+              content: `
+          You are Wizlor, a wise and brave Clash of Clans advisor. You only answer using the player's base info provided in the system prompt. Do not make up units, buildings, or progress. Keep replies short and friendly — 1–2 sentences. Never mention stats that were not shared. If unsure, say "I can't see that info, Chief."
+          `
+            },
+            {
+              role: "user",
+              content: prompt
+            }
+          ]
+          
         })
       });
   
