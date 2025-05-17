@@ -93,28 +93,13 @@ Clan Castle: ${PLAYER_DATA.clanCastle}
 Current Quest: ${PLAYER_DATA.currentQuest}
 `;
 
-  const prompt = `
-You're Wizlor — the legendary Clash of Clans battle wizard 🧙‍♂️.
-You speak with confidence, charm, and a bit of mischief.
-Your job? Help players like a true strategist.
-
-Use this player info:
-${playerContext}
-
-When they ask: "${userQuestion}"
-
-Respond in **1 or 2 fun sentences max.** Be bold, witty, and *never boring*.
-Think like a wizard-coach: quick tips, strong calls, and medieval flavor.
-Example tone: "Don’t just upgrade walls — melt 'em with might! 🔥"
-
-Let’s go, Wizlor style!
-`;
+const { prompt } = req.body;
 
   try {
     const response = await fetch("/api/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: prompt })
+      body: JSON.stringify({ prompt })
     });
 
     const data = await response.json();
