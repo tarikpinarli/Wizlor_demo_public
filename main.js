@@ -51,15 +51,63 @@ function speak(text) {
   speechSynthesis.speak(utterance);
 }
 
+// 🧠 Real game data from your screenshot
+const PLAYER_DATA = {
+  name: "clab2l",
+  level: 4,
+  townHall: 2,
+  trophies: 21,
+  gold: 9971,
+  elixir: 5744,
+  gems: 267,
+  builderStatus: "2/2 active",
+  shieldTime: "10h 14m",
+  army: "35 Barbarians",
+  defenses: ["2 Cannons", "1 Archer Tower"],
+  clanCastle: "Not rebuilt",
+  storage: {
+    gold: "full",
+    elixir: "half"
+  },
+  currentQuest: "Rebuild the Clan Castle"
+};
+
 async function askGuide(userQuestion) {
   const responseDiv = document.getElementById("response");
   responseDiv.innerHTML = `<strong>Wizlor:</strong> Thinking...`;
+
+  const playerContext = `
+Player Name: ${PLAYER_DATA.name}
+Level: ${PLAYER_DATA.level}
+Town Hall Level: ${PLAYER_DATA.townHall}
+Trophies: ${PLAYER_DATA.trophies}
+Gold: ${PLAYER_DATA.gold}
+Elixir: ${PLAYER_DATA.elixir}
+Gems: ${PLAYER_DATA.gems}
+Builders: ${PLAYER_DATA.builderStatus}
+Shield: ${PLAYER_DATA.shieldTime}
+Army: ${PLAYER_DATA.army}
+Defenses: ${PLAYER_DATA.defenses.join(", ")}
+Storage: Gold is ${PLAYER_DATA.storage.gold}, Elixir is ${PLAYER_DATA.storage.elixir}
+Clan Castle: ${PLAYER_DATA.clanCastle}
+Current Quest: ${PLAYER_DATA.currentQuest}
+`;
+
+  const prompt = `
+You are Wizlor, a smart and fun Clash of Clans advisor. The player has the following stats:
+
+${playerContext}
+
+They asked: "${userQuestion}"
+
+Reply in 2–3 friendly sentences. Give clear, helpful and strategic advice based on their current base.
+`;
 
   try {
     const response = await fetch("/api/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: userQuestion })
+      body: JSON.stringify({ question: prompt })
     });
 
     const data = await response.json();
