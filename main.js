@@ -77,29 +77,31 @@ async function askGuide(userQuestion) {
   responseDiv.innerHTML = `<strong>Wizlor:</strong> Thinking...`;
 
   const playerContext = `
-Player Name: ${PLAYER_DATA.name}
-Level: ${PLAYER_DATA.level}
-Town Hall Level: ${PLAYER_DATA.townHall}
-Trophies: ${PLAYER_DATA.trophies}
-Gold: ${PLAYER_DATA.gold}
-Elixir: ${PLAYER_DATA.elixir}
-Gems: ${PLAYER_DATA.gems}
-Builders: ${PLAYER_DATA.builderStatus}
-Shield: ${PLAYER_DATA.shieldTime}
-Army: ${PLAYER_DATA.army}
-Defenses: ${PLAYER_DATA.defenses.join(", ")}
-Storage: Gold is ${PLAYER_DATA.storage.gold}, Elixir is ${PLAYER_DATA.storage.elixir}
-Clan Castle: ${PLAYER_DATA.clanCastle}
+Town Hall: ${PLAYER_DATA.townHall}, Level: ${PLAYER_DATA.level}
+Builders: ${PLAYER_DATA.builderStatus}, Shield: ${PLAYER_DATA.shieldTime}
+Gold: ${PLAYER_DATA.gold}, Elixir: ${PLAYER_DATA.elixir}, Army: ${PLAYER_DATA.army}
+Defenses: ${PLAYER_DATA.defenses.join(", ")}, Clan Castle: ${PLAYER_DATA.clanCastle}
 Current Quest: ${PLAYER_DATA.currentQuest}
 `;
 
-const { prompt } = req.body;
+  const prompt = `
+You're Wizlor — a battle-worn Clash of Clans wizard who talks like a trusted war buddy.
+You're helpful, brave, and speak in short, confident sentences with a friendly tone.
+
+Use this base info:
+${playerContext}
+
+The player asks: "${userQuestion}"
+
+Respond in 1–2 sentences. Be casual, fun, and strategic — like you're helping a friend in battle.
+Don't mention the user's name directly. Focus on what they should do next.
+`;
 
   try {
     const response = await fetch("/api/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt })
+      body: JSON.stringify({ prompt }) // ✅ this is correct
     });
 
     const data = await response.json();
