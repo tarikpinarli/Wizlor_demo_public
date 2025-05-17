@@ -1,7 +1,14 @@
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: url('public/coc_background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
 #wizlor-box {
   position: fixed;
-  bottom: 20%;
-  right: 40px; /* moved from left to right */
+  bottom: 40px;
+  left: 40px;
   width: 300px;
   height: auto;
   background-color: rgba(255, 255, 255, 0.95);
@@ -14,4 +21,29 @@
   justify-content: flex-start;
   overflow: hidden;
   z-index: 9999;
+}
+
+#wizlor-box p {
+  margin: 6px 0;
+  font-size: 14px;
+  line-height: 1.3em;
+}
+
+#wizlor-box strong {
+  color: #3b4cca;
+}
+
+#mic-btn {
+  margin-top: 8px;
+  padding: 8px;
+  font-size: 14px;
+  background-color: #3b4cca;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#mic-btn:hover {
+  background-color: #2a3691;
 }
