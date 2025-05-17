@@ -60,6 +60,7 @@ Defenses: 2 Cannons, 1 Archer Tower
 Clan Castle: Not rebuilt
 Builders: 2 active
 Shield: 10h 14m
+Quest: Rebuild the Clan Castle
 `;
 
 async function askGuide(userQuestion) {
@@ -78,6 +79,7 @@ Defenses: 2 Cannons, 1 Archer Tower
 Clan Castle: Not rebuilt
 Builders: 2 active
 Shield: 4h 32m
+Quest: Rebuild the Clan Castle
 
 Question: ${userQuestion}
 `;
