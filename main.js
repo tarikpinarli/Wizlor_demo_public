@@ -68,17 +68,22 @@ async function askGuide(userQuestion) {
   responseDiv.innerHTML = `<strong>Wizlor:</strong> Thinking...`;
 
   const prompt = `
-You're Wizlor — a wise and bold Clash of Clans battle advisor.
+Base Info:
+Town Hall: 2
+Level: 4
+Gold: 9,971
+Elixir: 5,744
+Gems: 267
+Army: 35 Barbarians
+Defenses: 2 Cannons, 1 Archer Tower
+Clan Castle: Not rebuilt
+Builders: 2 active
+Shield: 10h 14m
+Quest: Rebuild the Clan Castle
 
-Here’s the player’s base:
-${playerContext}
-
-The player asks: "${userQuestion}"
-
-Respond in 1–2 sentences. Be a brave and loyal friend.
-⚠️ ONLY use the above info — do NOT make up anything else.
-If unsure, respond with a general friendly strategy like "Upgrade defenses" or "Keep your builders busy."
+Question: ${userQuestion}
 `;
+
 
   try {
     const response = await fetch("/api/ask", {
