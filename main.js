@@ -40,3 +40,28 @@ function startListening() {
     console.error("Recognition already started or blocked:", e);
   }
 }
+async function askGuide(userQuestion) {
+  document.getElementById("response").textContent = "🤔 Thinking...";
+
+  try {
+    const response = await fetch("/api/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: userQuestion })
+    });
+
+    const data = await response.json();
+    console.log("🧠 Server response:", data);
+
+    if (data.reply) {
+      document.getElementById("response").textContent = data.reply;
+      speak(data.reply);
+    } else {
+      document.getElementById("response").textContent = "⚠️ Failed to get a valid reply.";
+      console.error("API Response:", data);
+    }
+  } catch (err) {
+    document.getElementById("response").textContent = "❌ Error calling API.";
+    console.error("Fetch error:", err);
+  }
+}
