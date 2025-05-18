@@ -69,6 +69,7 @@ async function askGuide(userQuestion) {
   responseDiv.innerHTML = `<strong>Wizlor:</strong> Thinking...`;
 
   const prompt = `
+player name: clab21
 Base Info:
 Town Hall: 2
 Level: 4
