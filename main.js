@@ -52,6 +52,7 @@ function speak(text) {
 
 // 🧠 Real game data from your screenshot
 const playerContext = `
+player name: clab21
 Town Hall: 2
 Level: 4
 Gold: 9,971 | Elixir: 5,744 | Gems: 267
