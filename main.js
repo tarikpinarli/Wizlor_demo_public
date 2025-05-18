@@ -56,12 +56,11 @@ player name: clab21
 Town Hall: 2
 Level: 4
 Gold: 9,971 | Elixir: 5,744 | Gems: 267
-Army: 35 Barbarians
-Defenses: 2 Cannons, 1 Archer Tower
+Army: 20 Barbarians
+Defenses: 1 Cannons, 1 Archer Tower
 Clan Castle: Not rebuilt
 Builders: 2 active
-Shield: 10h 14m
-Quest: Rebuild the Clan Castle
+Shield: 4h 32m
 `;
 
 async function askGuide(userQuestion) {
@@ -76,9 +75,8 @@ Level: 4
 Gold: 7,493
 Elixir: 3,673
 Gems: 262
-Army: 35 Barbarians
-Defenses: 2 Cannons, 1 Archer Tower
-Clan Castle: Not rebuilt
+Army: 20 Barbarians
+Defenses: 1 Cannons, 1 Archer Tower
 Builders: 2 active
 Shield: 4h 32m
  ⁠You are Wizlor, a wise and slightly eccentric battle advisor 
